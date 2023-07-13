@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <TextView
+        android:id="@+id/tvEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="194dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal"
+        android:text="Edit Profile"
+        android:textSize="30sp"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="39dp"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/tvEditProfile"
+        android:layout_alignBottom="@+id/tvEditProfile"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="6dp"
+        android:src="@drawable/arrow_icon"
+        tools:ignore="ContentDescription" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/tvEditProfile"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Full Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_style1"
+            android:paddingStart="10dp"
+            android:hint="Allan Felix"
+            android:layout_marginTop="2dp"
+            android:textColor="@android:color/black" />
+
+        <!-- Email -->
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/drawable_email"
+            android:hint="adamsmithdomain@gmail.com"
+            android:paddingRight="9dp"
+            android:paddingStart="10dp"
+            android:textColor="@android:color/black" />
+
+        <!-- Phone Number -->
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/drawable_phone"
+            android:hint="+334567839087"
+            android:paddingStart="10dp"
+            android:paddingRight="9dp"
+            android:textColor="@android:color/black" />
+
+        <!-- Gender and Age -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="0dp"
+            android:layout_marginBottom="0dp"
+            android:orientation="horizontal"
+            android:padding="6dp">
+
+            <TextView
+                android:id="@+id/tvGender"
+                android:layout_width="159dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="0dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="14dp"
+                android:text="Gender"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+
+            <TextView
+                android:id="@+id/tvAge"
+                android:layout_width="159dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginEnd="75dp"
+                android:text="Age"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                tools:ignore="TextSizeCheck" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal"
+            android:padding="0dp">
+
+            <Spinner
+                android:id="@+id/spinner1"
+                android:layout_width="336dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_style1"
+                tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+
+            <Spinner
+                android:id="@+id/spinner2"
+                android:layout_width="336dp"
+                android:layout_height="42dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:background="@drawable/spinner_style1"
+                android:contentDescription="@string/spinner2_prompt"
+                tools:ignore="TouchTargetSizeCheck" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvAbout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingEnd="10dp"
+            android:text="About"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etAbout"
+            android:layout_width="360dp"
+            android:layout_height="80dp"
+            android:background="@drawable/button_style2"
+            android:hint="**********************"
+            android:paddingStart="10dp"
+            />
+
+        <!-- Interest -->
+        <TextView
+            android:id="@+id/tvInterest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Interest"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etInterest"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/drawable_interests"
+            android:hint="Art, Movie, Book, Design..."
+            android:paddingStart="10dp"
+            android:paddingRight="9dp"
+          />
+
+        <!-- Address -->
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/drawable_location"
+            android:hint="Los Angels"
+            android:paddingRight="9dp"
+            android:paddingStart="10dp"
+             />
+
+        <Button
+            android:id="@+id/btnSaveChanges"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/watermelon_bg"
+            android:text="Save Changes"
+            tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+
+
+
+    </LinearLayout>
+</RelativeLayout>

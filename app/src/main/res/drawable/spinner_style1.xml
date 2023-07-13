@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+            <item>
+                <shape
+                    android:shape="rectangle">
+                    <corners android:radius="55dp" />
+                    <stroke
+                        android:color="#616161"
+                        android:width="1dp" />
+                </shape>
+
+            </item>
+               <item
+                   android:drawable="@drawable/ic_arrow_dropdown"
+                   android:gravity="end|center" />
+        </layer-list>
+    </item>
+</selector>
