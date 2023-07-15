@@ -153,11 +153,11 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="270dp"
+        android:layout_marginTop="282dp"
         android:text="New Service Available"
         android:textColor="@android:color/black"
         android:textSize="16sp" />
+
     <Switch
         android:id="@+id/switchNewservice"
         android:layout_width="wrap_content"
