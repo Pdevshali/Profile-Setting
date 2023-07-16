@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/button_style3"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="20dp"
+        tools:ignore="UselessParent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageView"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_Left="20dp">
+
+            <ImageView
+                android:layout_width="90dp"
+                android:layout_height="90dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/colorPrimary"
+                android:src="@drawable/photo"
+                tools:ignore="ContentDescription" />
+
+        </androidx.cardview.widget.CardView>
+
+        <LinearLayout
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:textStyle="bold"
+                android:hint="Esther Howard" />
+
+            <TextView
+                android:layout_width="150dp"
+                android:layout_height="20dp"
+                android:hint="+916787676768"
+                android:textStyle="bold"
+                tools:ignore="VisualLintBounds" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btInvite"
+            android:layout_width="95dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="265dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_style7"
+            android:gravity="center"
+            android:text="Invite"
+            android:textAllCaps="false"
+            android:textColor="#FF4D67"
+            android:textsize="50dp"
+            tools:ignore="MissingConstraints"/>
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
