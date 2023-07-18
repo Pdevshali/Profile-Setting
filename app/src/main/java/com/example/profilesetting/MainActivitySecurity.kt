@@ -2,6 +2,7 @@ package com.example.profilesetting
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.Switch
@@ -123,7 +124,8 @@ class MainActivitySecurity : AppCompatActivity() {
     private fun openChangePasswordScreen() {
         // Open change password screen logic here
         // Example: Start the ChangePasswordActivity
-//        startActivity(ChangePasswordActivity.newIntent(this))
+        val intent = Intent(this, MainActivityChangePassword::class.java)
+        startActivity(intent)
     }
 
     companion object

@@ -18,7 +18,6 @@ import java.net.URI
 
 class MainActivityCreateProfile : AppCompatActivity() {
 
-    private lateinit var selectedImg : URI
     private lateinit var ProfileImage : ImageView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

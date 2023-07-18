@@ -64,7 +64,7 @@
             android:layout_marginStart="270dp"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck" />
+            tools:ignore="DuplicateSpeakableTextCheck,TouchTargetSizeCheck,UseSwitchCompatOrMaterialXml" />
     </LinearLayout>
 
 
@@ -99,7 +99,7 @@
             android:layout_marginStart="220dp"
             android:minWidth="48dp"
             android:minHeight="48dp"
-            tools:ignore="TouchTargetSizeCheck" />
+            tools:ignore="TouchTargetSizeCheck,UseSwitchCompatOrMaterialXml" />
 
     </LinearLayout>
 
