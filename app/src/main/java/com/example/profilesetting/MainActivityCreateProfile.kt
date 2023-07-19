@@ -14,7 +14,8 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
-import java.net.URI
+
+private const val REQUEST_CODE_IMAGE_PICK = 0
 
 class MainActivityCreateProfile : AppCompatActivity() {
 
@@ -38,7 +39,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
             val intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
             intent.type = "image/*"
-            startActivityForResult(intent, 1)
+            startActivityForResult(intent, REQUEST_CODE_IMAGE_PICK)
         }
 
         profileButton.setOnClickListener {
@@ -62,7 +63,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
         notificationButton.setOnClickListener {
             showToast("Notification button clicked")
-            val intent = Intent(this, MainActivityNotification::class.java)
+            val intent = Intent(this, MainActivity_Notification::class.java)
             startActivity(intent)
         }
 
@@ -96,8 +97,8 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
         friendsButton.setOnClickListener {
             showToast("Invite Friends button clicked")
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, MainActivityInviteFriends::class.java)
+//            startActivity(intent)
         }
 
         logoutButton.setOnClickListener {
@@ -116,7 +117,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
     @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
+        if (requestCode == REQUEST_CODE_IMAGE_PICK && resultCode == Activity.RESULT_OK) {
             val imageUri: Uri? = data?.data
             imageUri?.let {
                 val bitmap = if (Build.VERSION.SDK_INT < 28) {

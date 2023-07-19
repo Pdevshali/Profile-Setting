@@ -16,7 +16,6 @@ class MainActivityInviteFriends : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.invitefriends)
-
         inviteButton = findViewById(R.id.btInvite)
         inviteText = findViewById(R.id.tvInviteFriends)
 

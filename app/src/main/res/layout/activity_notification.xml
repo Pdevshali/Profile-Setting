@@ -28,7 +28,7 @@
             tools:ignore="HardcodedText,TextSizeCheck" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewIcon1"
             android:layout_width="39dp"
             android:layout_height="40dp"
             android:layout_alignParentStart="true"

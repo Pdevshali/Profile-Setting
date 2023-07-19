@@ -17,13 +17,13 @@
         android:theme="@style/Theme.ProfileSetting"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity_Notification"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityChangePassword"
             android:exported="false" />
         <activity
             android:name=".MainActivityInviteFriends"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivityNotification"
             android:exported="false" />
         <activity
             android:name=".MainActivitySecurity"

@@ -27,7 +27,7 @@
             tools:ignore="HardcodedText" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageViewIcon"
             android:layout_width="39dp"
             android:layout_height="50dp"
             android:layout_alignTop="@+id/tvInviteFriends"
@@ -148,7 +148,7 @@
 
     <!-- Change Password Button -->
     <Button
-        android:id="@+id/btChangePassword"
+        android:id="@+id/btnChangePassword"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_gravity="center"

@@ -116,21 +116,21 @@ class MainActivityEdit : AppCompatActivity() {
                 when (selectedAge) {
                     "18-24" -> {
                         // Perform actions for 18-24 age range selection
-                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
                     }
                     "25-34" -> {
                         // Perform actions for 25-34 age range selection
-                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
 
                     }
                     "35-44" -> {
                         // Perform actions for 35-44 age range selection
-                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
 
                     }
                     "45+" -> {
                         // Perform actions for 45+ age range selection
-                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
 
                     }
                 }

@@ -5,41 +5,50 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.Switch
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivitySecurity : AppCompatActivity() {
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var switchFaceIdStatus: Switch
+    private lateinit var SwitchFaceIdStatus: Switch
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var switchRememberMeStatus: Switch
+    private lateinit var SwitchRememberMeStatus: Switch
     @SuppressLint("UseSwitchCompatOrMaterialCode")
-    private lateinit var switchTouchIdStatus: Switch
-    private lateinit var btChangePassword: Button
+    private lateinit var SwitchTouchIdStatus: Switch
+    private lateinit var BtnChangePassword: Button
+    private lateinit var ImageViewIcon: ImageView
 
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_setting_security)
 
-        switchFaceIdStatus = findViewById(R.id.switchFaceIdStatus)
-        switchRememberMeStatus = findViewById(R.id.switchRememberMeStatus)
-        switchTouchIdStatus = findViewById(R.id.switchTouchIdStatus)
-        btChangePassword = findViewById(R.id.btChangePassword)
+        SwitchFaceIdStatus = findViewById(R.id.switchFaceIdStatus)
+        SwitchRememberMeStatus = findViewById(R.id.switchRememberMeStatus)
+        SwitchTouchIdStatus = findViewById(R.id.switchTouchIdStatus)
+        BtnChangePassword = findViewById(R.id.btnChangePassword)
+        ImageViewIcon = findViewById(R.id.imageViewIcon)
 
-        switchFaceIdStatus.setOnCheckedChangeListener { _, isChecked ->
+        ImageViewIcon.setOnClickListener {
+            val intent = Intent(this, MainActivityCreateProfile::class.java)
+            startActivity(intent)
+        }
+
+        SwitchFaceIdStatus.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Perform actions when Face ID switch is turned on
-                btChangePassword.setBackgroundResource(R.drawable.watermelon_bg)
+                BtnChangePassword.setBackgroundResource(R.drawable.watermelon_bg)
                 enableFaceIdAuthentication()
             } else {
                 // Perform actions when Face ID switch is turned off
-                btChangePassword.setBackgroundResource(android.R.color.transparent)
+                BtnChangePassword.setBackgroundResource(android.R.color.transparent)
                 disableFaceIdAuthentication()
             }
         }
 
-        switchRememberMeStatus.setOnCheckedChangeListener { _, isChecked ->
+        SwitchRememberMeStatus.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Perform actions when Remember Me switch is turned on
                 rememberLoginCredentials()
@@ -49,7 +58,7 @@ class MainActivitySecurity : AppCompatActivity() {
             }
         }
 
-        switchTouchIdStatus.setOnCheckedChangeListener { _, isChecked ->
+        SwitchTouchIdStatus.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Perform actions when Touch ID switch is turned on
                 enableTouchIdAuthentication()
@@ -59,7 +68,7 @@ class MainActivitySecurity : AppCompatActivity() {
             }
         }
 
-        btChangePassword.setOnClickListener {
+        BtnChangePassword.setOnClickListener {
             // Perform actions when Change Password button is clicked
             openChangePasswordScreen()
         }
