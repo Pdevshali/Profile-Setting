@@ -23,7 +23,6 @@
             android:layout_marginBottom="14dp"
             android:orientation="horizontal"
             android:text="Notification"
-            android:textColor="@android:color/black"
             android:textSize="30sp"
             tools:ignore="HardcodedText,TextSizeCheck" />
 
@@ -55,7 +54,6 @@
         android:layout_marginTop="70dp"
         android:layout_marginEnd="0dp"
         android:text="Sound"
-        android:textColor="@android:color/black"
         android:textSize="16sp"
         tools:ignore="TextSizeCheck" />
 
@@ -91,7 +89,6 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="135dp"
         android:text="Vibrate"
-        android:textColor="@android:color/black"
         android:textSize="16sp" />
 
 
@@ -123,7 +120,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="200dp"
         android:text="New Tips Available"
-        android:textColor="@android:color/black"
+
         android:textSize="16sp" />
 
     <Switch
@@ -155,7 +152,6 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="282dp"
         android:text="New Service Available"
-        android:textColor="@android:color/black"
         android:textSize="16sp" />
 
     <Switch

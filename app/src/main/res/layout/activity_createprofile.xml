@@ -210,7 +210,7 @@
             android:layout_height="48dp"
             android:layout_below="@+id/divider4"
             android:layout_marginStart="350dp"
-            android:layout_marginEnd="25dp"
+            android:layout_marginEnd="18dp"
 
             tools:ignore="UseSwitchCompatOrMaterialXml,TouchTargetSizeCheck" />
 
@@ -242,7 +242,7 @@
             android:layout_marginStart="124dp"
             android:layout_marginTop="570dp"
             android:text="Invite Friends"
-            android:textSize="20dp"
+            android:textSize="20sp"
             tools:ignore="MissingConstraints,TextSizeCheck,VisualLintOverlap"
             tools:layout_editor_absoluteX="125dp"
             tools:layout_editor_absoluteY="546dp" />

@@ -103,8 +103,8 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
         logoutButton.setOnClickListener {
             showToast("Logout button clicked")
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
         }
     }
 
