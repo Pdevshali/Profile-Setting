@@ -93,10 +93,10 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:background="@drawable/button_style1"
-            android:drawableRight="@drawable/drawable_email"
             android:hint="adamsmithdomain@gmail.com"
             android:paddingRight="9dp"
             android:paddingStart="10dp"
+            android:inputType="textEmailAddress"
             android:textColor="@android:color/black" />
 
         <!-- Phone Number -->
@@ -129,7 +129,6 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="32dp"
-            android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentBottom="true"

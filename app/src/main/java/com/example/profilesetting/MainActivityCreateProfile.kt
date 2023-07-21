@@ -1,5 +1,6 @@
 package com.example.profilesetting
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import android.graphics.ImageDecoder
@@ -10,6 +11,7 @@ import android.os.Bundle
 import android.provider.MediaStore
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
@@ -20,6 +22,8 @@ private const val REQUEST_CODE_IMAGE_PICK = 0
 class MainActivityCreateProfile : AppCompatActivity() {
 
     private lateinit var ProfileImage : ImageView
+   @SuppressLint("UseSwitchCompatOrMaterialCode")
+   private lateinit var SwitchDark1: Switch
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_createprofile)
@@ -34,6 +38,9 @@ class MainActivityCreateProfile : AppCompatActivity() {
         val darkModeButton = findViewById<ImageButton>(R.id.imageButton4)
         val friendsButton = findViewById<ImageButton>(R.id.imagebutton5)
         val logoutButton = findViewById<ImageButton>(R.id.imageButton6)
+        SwitchDark1 = findViewById(R.id.switch1)
+
+
 
         ProfileImage.setOnClickListener {
             val intent = Intent()
@@ -75,23 +82,21 @@ class MainActivityCreateProfile : AppCompatActivity() {
             finish()
         }
 
-        darkModeButton.setOnClickListener {
-            val isDarkModeEnabled = darkModeButton.isSelected
-            darkModeButton.isSelected = !isDarkModeEnabled
 
-            if (isDarkModeEnabled) {
+        SwitchDark1.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+
+        SwitchDark1.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
                 // Dark mode is enabled
-                darkModeButton.setColorFilter(ContextCompat.getColor(this, R.color.Watermelon))
-                showToast("Dark Mode turned off")
-                // TODO: Apply light mode theme or update UI for light mode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                Toast.makeText(this, "Dark mode turned on", Toast.LENGTH_SHORT).show()
             } else {
                 // Dark mode is disabled
-                darkModeButton.setColorFilter(ContextCompat.getColor(this, android.R.color.black))
-                showToast("Dark Mode turned on")
-                // TODO: Apply dark mode theme or update UI for dark mode
-                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+                Toast.makeText(this, "Dark mode turned off", Toast.LENGTH_SHORT).show()
             }
+            // Recreate the activity to apply the new night mode setting immediately
+            recreate()
         }
 
 
@@ -107,6 +112,10 @@ class MainActivityCreateProfile : AppCompatActivity() {
 //            startActivity(intent)
         }
     }
+
+
+
+
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -130,4 +139,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
             }
         }
     }
+
+
+
 }
