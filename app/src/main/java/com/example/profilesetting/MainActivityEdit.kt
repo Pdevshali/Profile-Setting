@@ -1,5 +1,6 @@
 package com.example.profilesetting
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
@@ -19,12 +20,14 @@ class MainActivityEdit : AppCompatActivity() {
     private lateinit var etEmail: EditText
     private lateinit var etPhoneNumber: EditText
     private lateinit var spinner1: Spinner
-    private lateinit var spinner2: Spinner
+//    private lateinit var spinner2: Spinner
     private lateinit var etAbout: EditText
     private lateinit var etInterest: EditText
     private lateinit var etAddress: EditText
+    private lateinit var etAge: EditText
     private lateinit var btnSaveChanges: Button
     lateinit var ImageV : ImageView
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_edit_profile1)
@@ -34,8 +37,9 @@ class MainActivityEdit : AppCompatActivity() {
         etEmail = findViewById(R.id.etEmail)
         etPhoneNumber = findViewById(R.id.etPhoneNumber)
         spinner1 = findViewById(R.id.spinner1)
-        spinner2 = findViewById(R.id.spinner2)
+//        spinner2 = findViewById(R.id.spinner2)
         etAbout = findViewById(R.id.etAbout)
+        etAge = findViewById(R.id.etAge)
         etInterest = findViewById(R.id.etInterest)
         etAddress = findViewById(R.id.etAddress)
         btnSaveChanges = findViewById(R.id.btnSaveChanges)
@@ -56,11 +60,6 @@ class MainActivityEdit : AppCompatActivity() {
             finish()
         }
 
-        // Set click listener for the btnSaveChanges button
-        btnSaveChanges.setOnClickListener {
-            // Perform actions on button click
-            saveChanges()
-        }
 
         val genderOptions = arrayOf("Male", "Female", "Other")
 
@@ -99,46 +98,57 @@ class MainActivityEdit : AppCompatActivity() {
         }
 
 
-        val ageOptions = arrayOf("18-24", "25-34", "35-44", "45+")
 
-// Create an ArrayAdapter using the string array and a default spinner layout
-        val ageAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, ageOptions)
-// Specify the layout to use when the list of choices appears
-        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-// Apply the adapter to the spinner
-        spinner2.adapter = ageAdapter
 
-// Set item selection listener for spinner2 (Age)
-        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                val selectedAge = parent.getItemAtPosition(position).toString()
-                // Handle the selected age range value
-                when (selectedAge) {
-                    "18-24" -> {
-                        // Perform actions for 18-24 age range selection
-//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
-                    }
-                    "25-34" -> {
-                        // Perform actions for 25-34 age range selection
-//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//        val ageOptions = arrayOf("18-24", "25-34", "35-44", "45+")
+//
+//// Create an ArrayAdapter using the string array and a default spinner layout
+//        val ageAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, ageOptions)
+//// Specify the layout to use when the list of choices appears
+//        ageAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+//// Apply the adapter to the spinner
+//        spinner2.adapter = ageAdapter
+//
+//// Set item selection listener for spinner2 (Age)
+//        spinner2.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+//            override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
+//                val selectedAge = parent.getItemAtPosition(position).toString()
+//                // Handle the selected age range value
+//                when (selectedAge) {
+//                    "18-24" -> {
+//                        // Perform actions for 18-24 age range selection
+////                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//                    }
+//                    "25-34" -> {
+//                        // Perform actions for 25-34 age range selection
+////                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//
+//                    }
+//                    "35-44" -> {
+//                        // Perform actions for 35-44 age range selection
+////                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//
+//                    }
+//                    "45+" -> {
+//                        // Perform actions for 45+ age range selection
+////                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
+//
+//                    }
+//                }
+//            }
+//
+//            override fun onNothingSelected(parent: AdapterView<*>) {
+//                // Handle the case when nothing is selected
+//            }
+//        }
 
-                    }
-                    "35-44" -> {
-                        // Perform actions for 35-44 age range selection
-//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
 
-                    }
-                    "45+" -> {
-                        // Perform actions for 45+ age range selection
-//                        Toast.makeText(this@MainActivityEdit, selectedAge, Toast.LENGTH_SHORT).show()
 
-                    }
-                }
-            }
 
-            override fun onNothingSelected(parent: AdapterView<*>) {
-                // Handle the case when nothing is selected
-            }
+        // Set click listener for the btnSaveChanges button
+        btnSaveChanges.setOnClickListener {
+            // Perform actions on button click
+            saveChanges()
         }
 
 
@@ -153,6 +163,7 @@ class MainActivityEdit : AppCompatActivity() {
        val About =  etAbout.text.toString()
        val Interest = etInterest.text.toString()
        val Address =  etAddress.text.toString()
+        val Age = etAge.text.toString()
 
         // Perform actions with the retrieved values
     }
