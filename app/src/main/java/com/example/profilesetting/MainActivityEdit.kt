@@ -13,6 +13,8 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 class MainActivityEdit : AppCompatActivity() {
 
@@ -27,6 +29,11 @@ class MainActivityEdit : AppCompatActivity() {
     private lateinit var etAge: EditText
     private lateinit var btnSaveChanges: Button
     lateinit var ImageV : ImageView
+
+   private val db = Firebase.firestore
+
+
+
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +52,9 @@ class MainActivityEdit : AppCompatActivity() {
         btnSaveChanges = findViewById(R.id.btnSaveChanges)
         ImageV  = findViewById(R.id.imageView)
 
+
+
+
         // Set text color to watermelon color for EditText fields
         etFullName.setTextColor(Color.parseColor("#FF4D67"))
         etEmail.setTextColor(Color.parseColor("#FF4D67"))
@@ -52,6 +62,8 @@ class MainActivityEdit : AppCompatActivity() {
         etAbout.setTextColor(Color.parseColor("#FF4D67"))
         etInterest.setTextColor(Color.parseColor("#FF4D67"))
         etAddress.setTextColor(Color.parseColor("#FF4D67"))
+
+
 
         // back to the previous Activity
         ImageV.setOnClickListener {
@@ -150,10 +162,10 @@ class MainActivityEdit : AppCompatActivity() {
             // Perform actions on button click
             saveChanges()
         }
-
-
         // Add code for handling other UI components and their events as needed
     }
+
+
 
     private fun saveChanges() {
         // Retrieve the values from the EditText fields and perform the necessary actions
@@ -166,5 +178,29 @@ class MainActivityEdit : AppCompatActivity() {
         val Age = etAge.text.toString()
 
         // Perform actions with the retrieved values
+
+
+        // Reference to the user's profile document
+
+        // Create a map with the updated profile data
+        val updatedProfileMap = hashMapOf(
+            "name" to FullName,
+            "E-mail" to Email,
+            "location" to Address,
+            "Phone" to  PhoneNumber
+        )
+
+        // Update the document with the new data
+        db.collection("User").document().update(updatedProfileMap as Map<String, Any>)
+            .addOnSuccessListener {
+                Toast.makeText(this, "Successfully updated", Toast.LENGTH_SHORT).show()
+                etEmail.text.clear()
+            }
+            .addOnFailureListener {
+                Toast.makeText(this, "Failed", Toast.LENGTH_SHORT).show()
+
+            }
+
+
     }
 }
