@@ -9,6 +9,7 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.Switch
@@ -16,14 +17,19 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 private const val REQUEST_CODE_IMAGE_PICK = 0
 
 class MainActivityCreateProfile : AppCompatActivity() {
 
     private lateinit var ProfileImage : ImageView
+    lateinit var dialog: BottomSheetDialog
+
    @SuppressLint("UseSwitchCompatOrMaterialCode")
    private lateinit var SwitchDark1: Switch
+
+    @SuppressLint("UseCompatLoadingForDrawables")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_createprofile)
@@ -106,10 +112,32 @@ class MainActivityCreateProfile : AppCompatActivity() {
 //            startActivity(intent)
         }
 
+// Initializing dialog Alert box
+        dialog = BottomSheetDialog(this)
+        dialog.setContentView(R.layout.custom_dialogue)
+        dialog.window?.setBackgroundDrawable(getDrawable(R.drawable.bg_alert))
+
+
+        // Creating variables for custom dialog.xml layout
+        var buttonCancel = dialog.findViewById<Button>(R.id.btnCancel)
+        var buttonLogout = dialog.findViewById<Button>(R.id.btnLogout)
+
+
+        buttonCancel?.setOnClickListener {
+            dialog.dismiss()
+        }
+
+        buttonLogout?.setOnClickListener {
+            Toast.makeText(this, "We successfully receive your feedback", Toast.LENGTH_SHORT).show()
+
+            // logic of logOut feature
+
+        }
+
+
         logoutButton.setOnClickListener {
             showToast("Logout button clicked")
-//            val intent = Intent(this, MainActivity::class.java)
-//            startActivity(intent)
+            dialog.show()
         }
     }
 
