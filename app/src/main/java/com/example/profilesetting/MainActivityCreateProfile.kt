@@ -94,12 +94,18 @@ class MainActivityCreateProfile : AppCompatActivity() {
         SwitchDark1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
                 // Dark mode is enabled
+                darkModeButton.setColorFilter(ContextCompat.getColor(this, R.color.white))
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+
                 Toast.makeText(this, "Dark mode turned on", Toast.LENGTH_SHORT).show()
+
+
             } else {
                 // Dark mode is disabled
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
                 Toast.makeText(this, "Dark mode turned off", Toast.LENGTH_SHORT).show()
+
+
             }
             // Recreate the activity to apply the new night mode setting immediately
             recreate()

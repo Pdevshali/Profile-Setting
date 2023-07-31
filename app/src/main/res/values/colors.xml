@@ -4,6 +4,15 @@
     <color name="white">#FFFFFFFF</color>
     <color name="Watermelon">#FF3366</color>
     <color name="colorPrimary">#E1D6D6</color>
+
+    <color name="icon_color">#B7ED5C71</color>
+
+
+
+    <color name="background_color">#E1D6D6</color>
+
+
+
 </resources>
 
 
