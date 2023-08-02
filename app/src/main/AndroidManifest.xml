@@ -17,6 +17,9 @@
         android:theme="@style/Theme.ProfileSetting"
         tools:targetApi="31">
         <activity
+            android:name=".Sign_In_Activity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity_Notification"
             android:exported="false" />
         <activity

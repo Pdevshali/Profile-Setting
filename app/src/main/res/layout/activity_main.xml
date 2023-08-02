@@ -7,17 +7,176 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="2dp"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Full Name -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:textSize="17sp"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="5dp"
+            android:backgroundTint="#FF4D67" />
 
 
-    <Button
-        android:id="@+id/btn"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Continue With Google"
-        android:textColor="#FF4D67"
-        android:textAllCaps="false"
-        android:layout_marginTop="70dp"
-        tools:ignore="MissingConstraints" />
+        <!-- Email -->
+        <EditText
+            android:id="@+id/etFullName"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_style1"
+            android:hint="Allan Felix"
+            android:paddingStart="10dp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:text="Email"
+            android:layout_margin="10dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_style1"
+            android:hint="adamsmithdomain@gmail.com"
+            android:paddingRight="9dp"
+            android:paddingStart="10dp"
+            android:inputType="textEmailAddress"
+            android:textColor="@android:color/black" />
+
+        <!-- Phone Number -->
+        <TextView
+            android:id="@+id/tvPhoneNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Phone Number"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etPhoneNumber"
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/drawable_phone"
+            android:hint="+334567839087"
+            android:paddingStart="10dp"
+            android:paddingRight="9dp"
+            android:textColor="@android:color/black" />
+
+        <!--   Password     -->
+        <!-- Phone Number -->
+        <TextView
+            android:id="@+id/tvPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Password"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <!-- Address -->
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="360dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/baseline_password_24"
+            android:hint="*****************"
+            android:paddingStart="10dp"
+            android:paddingRight="9dp"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/tvAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Address"
+            android:textSize="16sp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:backgroundTint="#FF4D67" />
+
+
+        <EditText
+            android:id="@+id/etAddress"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/button_style1"
+            android:drawableRight="@drawable/drawable_location"
+            android:hint="Los Angels"
+            android:paddingRight="9dp"
+            android:paddingStart="10dp"
+            />
+
+        <Button
+            android:id="@+id/btnRegister"
+            android:layout_width="360dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_edit_profile"
+            android:text="Save Changes"
+            tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+
+
+
+    </LinearLayout>
 </LinearLayout>
