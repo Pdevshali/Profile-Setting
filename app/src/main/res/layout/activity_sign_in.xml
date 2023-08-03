@@ -87,12 +87,23 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_edit_profile"
-            android:text="Save Changes"
+            android:background="@drawable/button_style7"
+            android:text="Sign In"
             tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Don't  have an account"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
 
 
 
     </LinearLayout>
+
 </LinearLayout>

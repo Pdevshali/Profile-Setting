@@ -18,6 +18,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.google.firebase.auth.FirebaseAuth
 
 private const val REQUEST_CODE_IMAGE_PICK = 0
 
@@ -25,8 +26,10 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
     private lateinit var ProfileImage : ImageView
     lateinit var dialog: BottomSheetDialog
+    lateinit var firebaseAuth : FirebaseAuth
 
-   @SuppressLint("UseSwitchCompatOrMaterialCode")
+
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
    private lateinit var SwitchDark1: Switch
 
     @SuppressLint("UseCompatLoadingForDrawables")
@@ -45,6 +48,8 @@ class MainActivityCreateProfile : AppCompatActivity() {
         val friendsButton = findViewById<ImageButton>(R.id.imagebutton5)
         val logoutButton = findViewById<ImageButton>(R.id.imageButton6)
         SwitchDark1 = findViewById(R.id.switch1)
+        firebaseAuth = FirebaseAuth.getInstance()
+
 
 
 
@@ -137,6 +142,23 @@ class MainActivityCreateProfile : AppCompatActivity() {
             Toast.makeText(this, "We successfully receive your feedback", Toast.LENGTH_SHORT).show()
 
             // logic of logOut feature
+            val currentUser = firebaseAuth.currentUser
+
+            if (currentUser == null) {
+                // If the current user is already null (not logged in), just return
+                Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show()
+
+            }
+
+            // Log out the current user
+            Toast.makeText(this, "User  logged out", Toast.LENGTH_SHORT).show()
+            firebaseAuth.signOut()
+
+            // After logging out, redirect to the Login activity
+            val intent = Intent(this, Sign_In_Activity::class.java)
+            startActivity(intent)
+            finish()
+
 
         }
 

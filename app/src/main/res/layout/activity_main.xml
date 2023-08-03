@@ -171,9 +171,19 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/bg_edit_profile"
+            android:background="@drawable/button_style7"
             android:text="Save Changes"
             tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="Already have an account"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
 
 
