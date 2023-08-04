@@ -4,4 +4,5 @@
     <color name="background_color">#FF000000</color>
     <color name="icon_color">@color/white</color>
 
+
 </resources>

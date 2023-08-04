@@ -43,8 +43,7 @@
             android:layout_marginBottom="10dp"
             android:background="@drawable/button_style1"
             android:hint="Allan Felix"
-            android:paddingStart="10dp"
-            android:textColor="@android:color/black" />
+            android:paddingStart="10dp" />
 
         <TextView
             android:id="@+id/tvEmail"
@@ -73,7 +72,7 @@
             android:paddingRight="9dp"
             android:paddingStart="10dp"
             android:inputType="textEmailAddress"
-            android:textColor="@android:color/black" />
+           />
 
         <!-- Phone Number -->
         <TextView
@@ -103,7 +102,7 @@
             android:hint="+334567839087"
             android:paddingStart="10dp"
             android:paddingRight="9dp"
-            android:textColor="@android:color/black" />
+             />
 
         <!--   Password     -->
         <!-- Phone Number -->
@@ -135,7 +134,7 @@
             android:hint="*****************"
             android:paddingStart="10dp"
             android:paddingRight="9dp"
-            android:textColor="@android:color/black" />
+             />
 
         <TextView
             android:id="@+id/tvAddress"
@@ -171,9 +170,10 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
-            android:background="@drawable/button_style7"
+            android:background="@drawable/bg_edit_profile"
             android:text="Save Changes"
             tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
 
         <TextView
             android:id="@+id/textView3"
@@ -182,9 +182,9 @@
             android:layout_gravity="center"
             android:gravity="center"
             android:text="Already have an account"
-            android:textSize="20sp"
+            android:textSize="15sp"
+            android:layout_marginTop="10dp"
             android:textStyle="bold" />
-
 
 
 
