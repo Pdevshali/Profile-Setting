@@ -139,7 +139,6 @@ class MainActivityCreateProfile : AppCompatActivity() {
         }
 
         buttonLogout?.setOnClickListener {
-            Toast.makeText(this, "We successfully receive your feedback", Toast.LENGTH_SHORT).show()
 
             // logic of logOut feature
             val currentUser = firebaseAuth.currentUser

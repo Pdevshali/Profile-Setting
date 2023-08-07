@@ -61,7 +61,7 @@
         </LinearLayout>
 
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btInvite"
             android:layout_width="95dp"
             android:layout_height="50dp"

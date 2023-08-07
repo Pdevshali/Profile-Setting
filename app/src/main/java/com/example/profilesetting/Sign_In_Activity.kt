@@ -2,13 +2,16 @@ package com.example.profilesetting
 
 import android.annotation.SuppressLint
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
+
 
 class Sign_In_Activity : AppCompatActivity() {
 
@@ -16,6 +19,7 @@ class Sign_In_Activity : AppCompatActivity() {
     private lateinit var etPassword: EditText
     lateinit var textView4 : TextView
     lateinit var btnSignIn : Button
+   lateinit var progressBar: ProgressBar
     lateinit var firebaseAuth : FirebaseAuth
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +30,7 @@ class Sign_In_Activity : AppCompatActivity() {
         etPassword = findViewById(R.id.etPassword)
         textView4 = findViewById(R.id.textView4)
         btnSignIn = findViewById(R.id.btnSignIn)
+        progressBar = findViewById(R.id.login_progress)
         firebaseAuth = FirebaseAuth.getInstance()
 
 
@@ -36,6 +41,8 @@ class Sign_In_Activity : AppCompatActivity() {
         }
 
         btnSignIn.setOnClickListener {
+
+            progressBar.visibility = View.VISIBLE
             // getting the information
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -43,9 +50,17 @@ class Sign_In_Activity : AppCompatActivity() {
                 firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener {
                     if (it.isSuccessful) {
 //                        to navigate between fragments within the same activity,
-                        etEmail.text.clear()
-                        etPassword.text.clear()
-                        goToCreateProfileActivity()
+
+                        val varification = firebaseAuth.currentUser?.isEmailVerified
+
+                        if(varification == true){
+                            etEmail.text.clear()
+                            etPassword.text.clear()
+                            goToCreateProfileActivity()
+                        }else{
+                            Toast.makeText(this, "Please verify email", Toast.LENGTH_SHORT).show()
+                        }
+
 
 
                     } else {

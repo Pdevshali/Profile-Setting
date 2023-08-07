@@ -31,13 +31,14 @@
         android:layout_marginTop="50dp"
        >
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnCancel"
         android:layout_width="match_parent"
         android:layout_margin="30dp"
         android:layout_weight="1"
         android:background="@drawable/button_style7"
         android:textColor="@color/Watermelon"
+        android:textAllCaps="false"
         android:layout_height="wrap_content"
         android:text="Cencel" />
     <Button
@@ -46,6 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textColor="@color/white"
+        android:allowClickWhenDisabled="false"
         android:backgroundTint="@color/Watermelon"
         android:layout_margin="30dp"
         android:text="Yes, Logout" />

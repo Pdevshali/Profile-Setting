@@ -147,7 +147,7 @@
 
 
     <!-- Change Password Button -->
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnChangePassword"
         android:layout_width="350dp"
         android:layout_height="50dp"

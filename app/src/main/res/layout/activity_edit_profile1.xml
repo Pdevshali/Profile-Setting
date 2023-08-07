@@ -271,11 +271,13 @@
             android:paddingStart="10dp"
              />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnSaveChanges"
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginTop="16dp"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:background="@drawable/bg_edit_profile"
             android:text="Save Changes"
             tools:ignore="VisualLintButtonSize,TextContrastCheck" />
