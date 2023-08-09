@@ -1,36 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="15dp"
+    android:layout_margin="15dp"
+    app:cardElevation="15dp">
 
-    <RelativeLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/button_style3"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="20dp"
-        tools:ignore="UselessParent">
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/imageView"
             android:layout_width="90dp"
             android:layout_height="90dp"
-            android:layout_marginLeft="10dp">
+          >
 
             <ImageView
+                android:id="@+id/itemImage"
                 android:layout_width="90dp"
                 android:layout_height="90dp"
-                android:layout_marginEnd="10dp"
                 android:background="@color/colorPrimary"
                 android:src="@drawable/photo"
                 tools:ignore="ContentDescription" />
@@ -38,31 +31,34 @@
         </androidx.cardview.widget.CardView>
 
         <LinearLayout
-            android:layout_width="130dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="160dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="80dp"
             android:orientation="vertical">
 
 
             <TextView
+                android:id="@+id/itemName"
                 android:layout_width="150dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:textStyle="bold"
+                android:textSize="18sp"
                 android:layout_marginBottom="15dp"
                 android:hint="Esther Howard" />
 
             <TextView
+                android:id="@+id/itemAddress"
                 android:layout_width="150dp"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
                 android:hint="+916787676768"
                 android:textStyle="bold"
+                android:textSize="15sp"
                 tools:ignore="VisualLintBounds" />
 
         </LinearLayout>
 
 
 
-    </RelativeLayout>
+    </LinearLayout>
 
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

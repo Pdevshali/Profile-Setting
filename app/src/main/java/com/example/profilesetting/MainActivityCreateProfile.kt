@@ -32,7 +32,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
     @SuppressLint("UseSwitchCompatOrMaterialCode")
    private lateinit var SwitchDark1: Switch
 
-    @SuppressLint("UseCompatLoadingForDrawables")
+    @SuppressLint("UseCompatLoadingForDrawables", "SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_createprofile)
@@ -53,6 +53,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
 
 
+
         ProfileImage.setOnClickListener {
             val intent = Intent()
             intent.action = Intent.ACTION_GET_CONTENT
@@ -65,7 +66,8 @@ class MainActivityCreateProfile : AppCompatActivity() {
         }
 
         editButton.setOnClickListener {
-            showToast("Edit button clicked")
+          val intent = Intent(this, ShowMatch_Activity::class.java)
+            startActivity(intent)
 
         }
 
@@ -90,7 +92,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
             showToast("Edit button clicked")
             val intent = Intent(this, MainActivitySecurity::class.java)
             startActivity(intent)
-            finish()
+
         }
 
 
@@ -130,8 +132,8 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
 
         // Creating variables for custom dialog.xml layout
-        var buttonCancel = dialog.findViewById<Button>(R.id.btnCancel)
-        var buttonLogout = dialog.findViewById<Button>(R.id.btnLogout)
+        val buttonCancel = dialog.findViewById<Button>(R.id.btnCancel)
+        val buttonLogout = dialog.findViewById<Button>(R.id.btnLogout)
 
 
         buttonCancel?.setOnClickListener {
