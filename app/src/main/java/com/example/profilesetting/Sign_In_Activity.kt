@@ -81,5 +81,6 @@ class Sign_In_Activity : AppCompatActivity() {
         val intent = Intent(this, MainActivityCreateProfile::class.java)
         startActivity(intent)
         Toast.makeText(this, "You are logged In", Toast.LENGTH_LONG).show()
+        finish()
     }
 }

@@ -110,6 +110,7 @@ class ShowMatch_Activity : AppCompatActivity() {
                 for (document in querySnapshot.documents) {
                     val name = document.getString("name") ?: ""
                     val location = document.getString("Location") ?: ""
+                    val imageUrl = document.getString("imageUrl") ?: ""
                     val latitude = document.getDouble("latitude") ?: 0.0
                     val longitude = document.getDouble("longitude") ?: 0.0
                     val id = document.id // Get the document ID (user ID)
@@ -122,7 +123,7 @@ class ShowMatch_Activity : AppCompatActivity() {
 //                    Log.d(ContentValues.TAG, "CurrentUser is: $currentUserId")
 
                     // Create a UserProfile object and add it to the list
-                    val userProfile = UserProfile(name, location, latitude, longitude, id)
+                    val userProfile = UserProfile(name, location, imageUrl, latitude, longitude, id)
                     allUsers.add(userProfile)
                 }
 

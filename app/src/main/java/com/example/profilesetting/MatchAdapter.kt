@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class MatchAdapter(private var userList: List<UserProfile>) :
     RecyclerView.Adapter<MatchAdapter.MyViewHolder> ()       {
@@ -16,7 +18,7 @@ class MatchAdapter(private var userList: List<UserProfile>) :
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         // declared teh variable from eachitem
         var RvName : TextView
-        //        var profileImage : ImageView
+        var profileImage : ImageView
         var RvAddress : TextView
 
 
@@ -25,7 +27,7 @@ class MatchAdapter(private var userList: List<UserProfile>) :
         // Initializing the declared variable
         init {
             RvName = itemView.findViewById(R.id.itemName)
-//          profileImage = itemView.findViewById(R.id.imageView)
+            profileImage = itemView.findViewById(R.id.itemImage)
             RvAddress = itemView.findViewById(R.id.itemAddress)
         }
     }
@@ -49,7 +51,21 @@ class MatchAdapter(private var userList: List<UserProfile>) :
         val currentUser = userList[position]
         holder.RvName.text = currentUser.name
         holder.RvAddress.text = currentUser.address
+        if (currentUser.imageUrl.isEmpty()) {
 
+            // User doesn't have a profile image, use default
+            Picasso.get()
+                .load(R.drawable.photo)
+                .into(holder.profileImage)
+
+        } else {
+
+            // User has profile image, load it
+            Picasso.get()
+                .load(currentUser.imageUrl)
+                .into(holder.profileImage)
+
+        }
 
     }
 

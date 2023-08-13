@@ -2,6 +2,7 @@ package com.example.profilesetting
 
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.ContentValues
 import android.content.Intent
 import android.graphics.ImageDecoder
 import android.net.Uri
@@ -9,30 +10,53 @@ import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.util.Log
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Switch
 import android.widget.TextView
 import android.widget.Toast
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.content.ContextCompat
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
+import de.hdodenhof.circleimageview.CircleImageView
 
-private const val REQUEST_CODE_IMAGE_PICK = 0
 
 class MainActivityCreateProfile : AppCompatActivity() {
 
-    private lateinit var ProfileImage : ImageView
+    private lateinit var ProfileImage : CircleImageView
     lateinit var dialog: BottomSheetDialog
+    lateinit var uploadBtn: Button
     lateinit var firebaseAuth : FirebaseAuth
+    lateinit var progressBar: ProgressBar
+
 
 
     @SuppressLint("UseSwitchCompatOrMaterialCode")
    private lateinit var SwitchDark1: Switch
 
     @SuppressLint("UseCompatLoadingForDrawables", "SuspiciousIndentation")
+    private val TAG = "FirebaseStorageManager"
+    private val storageRef = FirebaseStorage.getInstance().reference
+    private lateinit var db : FirebaseFirestore
+    var currFile : Uri? = null
+
+
+    private val getImageFromGallery = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
+        // Handle image URI here
+        ProfileImage = findViewById(R.id.profilepic)
+        ProfileImage.setImageURI(uri)
+        currFile = uri
+    }
+    @SuppressLint("SuspiciousIndentation", "MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_createprofile)
@@ -47,19 +71,31 @@ class MainActivityCreateProfile : AppCompatActivity() {
         val darkModeButton = findViewById<ImageButton>(R.id.imageButton4)
         val friendsButton = findViewById<ImageButton>(R.id.imagebutton5)
         val logoutButton = findViewById<ImageButton>(R.id.imageButton6)
+        uploadBtn = findViewById(R.id.btnUpload)
+        progressBar = findViewById(R.id.progress_upload)
         SwitchDark1 = findViewById(R.id.switch1)
         firebaseAuth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
 
 
+        // Set the data
+        setData()
 
-
-
+// uploading Image to firebase
         ProfileImage.setOnClickListener {
-            val intent = Intent()
-            intent.action = Intent.ACTION_GET_CONTENT
-            intent.type = "image/*"
-            startActivityForResult(intent, REQUEST_CODE_IMAGE_PICK)
+            getImageFromGallery.launch("image/*")
         }
+
+        uploadBtn.setOnClickListener {
+            progressBar.visibility = View.VISIBLE
+
+            uploadImage("User")
+            progressBar.visibility = View.GONE
+
+        }
+
+
+
 
         profileButton.setOnClickListener {
             showToast("Profile button clicked")
@@ -172,31 +208,64 @@ class MainActivityCreateProfile : AppCompatActivity() {
 
 
 
+    private fun uploadImage(folderName: String) {
+        if(currFile == null){
+            return
+        }
+        // For Image Upload
+        val userId = firebaseAuth.currentUser?.uid ?: return
+        val imageName = "${System.currentTimeMillis()}.jpg"
+
+        val imageRef = storageRef.child("$folderName/$imageName")
+        val uploadTask = imageRef.putFile(currFile!!)
+
+        uploadTask.addOnSuccessListener {
+            Toast.makeText(this, "Image Successfully uploaded", Toast.LENGTH_LONG).show()
+
+            it.metadata!!.reference!!.downloadUrl
+                .addOnSuccessListener {
+                    val userRef = db.collection("Users").document(userId)
+                    val updateMap = mapOf(
+                        "imageUrl" to it.toString()
+                    )
+                    userRef.update(updateMap).addOnSuccessListener {
+                        Log.d(TAG, "Image URL updated in Firestore")
+
+                    }
+
+                }
+        }
+
+    }
+
+    private fun setData() {
+        val userId = firebaseAuth.currentUser!!.uid
+        val ref = db.collection("Users").document(userId)
+
+        ref.get().addOnSuccessListener {
+            if(it!=null) {
+                val imageUrl = it.data?.get("imageUrl")?.toString()
+                if (imageUrl != null && imageUrl.isNotEmpty()){
+                    Picasso.get()
+                        .load(imageUrl)
+                        .into(ProfileImage)
+                } else {
+                    // Load and display a default profile image using Picasso
+                    ProfileImage.setImageResource(R.drawable.photo)
+                }
+
+
+            }
+        }.addOnFailureListener {
+            it.message?.let { it1 -> Log.d(ContentValues.TAG, it1) }
+        }
+    }
+
 
 
     private fun showToast(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
-
-
-    // to set the profile of user with selected image from gallery
-    @Deprecated("Deprecated in Java")
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == REQUEST_CODE_IMAGE_PICK && resultCode == Activity.RESULT_OK) {
-            val imageUri: Uri? = data?.data
-            imageUri?.let {
-                val bitmap = if (Build.VERSION.SDK_INT < 28) {
-                    MediaStore.Images.Media.getBitmap(contentResolver, it)
-                } else {
-                    val source = ImageDecoder.createSource(contentResolver, it)
-                    ImageDecoder.decodeBitmap(source)
-                }
-                ProfileImage.setImageBitmap(bitmap)
-            }
-        }
-    }
-
 
 
 }

@@ -29,7 +29,7 @@ class MainActivityEdit : AppCompatActivity() {
 //    private lateinit var spinner1: Spinner
     private lateinit var etAbout: EditText
     private lateinit var etInterest: EditText
-//    private lateinit var etAddress: EditText
+    private lateinit var etAddress: EditText
     private lateinit var etAge: EditText
     private lateinit var btnSaveChanges: Button
     lateinit var ImageV : ImageView
@@ -51,7 +51,7 @@ class MainActivityEdit : AppCompatActivity() {
         etAbout = findViewById(R.id.etAbout)
         etAge = findViewById(R.id.etAge)
         etInterest = findViewById(R.id.etInterest)
-//        etAddress = findViewById(R.id.etAddress)
+        etAddress = findViewById(R.id.etAddress)
         btnSaveChanges = findViewById(R.id.btnSaveChanges)
         ImageV = findViewById(R.id.imageView)
 
@@ -144,6 +144,7 @@ class MainActivityEdit : AppCompatActivity() {
             val age = etAge.text.toString().trim()
             val about = etAbout.text.toString().trim()
             val interest = etInterest.text.toString().trim()
+            val address = etAddress.text.toString().trim()
             val userId = firebaseAuth.currentUser!!.uid
 
 
@@ -157,6 +158,7 @@ class MainActivityEdit : AppCompatActivity() {
                 "Mobile" to phone,
                 "age" to age,
                 "about" to about,
+                "Location" to address,
                 "interest" to interest
             )
 
