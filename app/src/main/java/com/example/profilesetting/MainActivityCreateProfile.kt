@@ -132,7 +132,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
         }
 
 
-        SwitchDark1.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
+//        SwitchDark1.isChecked = AppCompatDelegate.getDefaultNightMode() == AppCompatDelegate.MODE_NIGHT_YES
 
         SwitchDark1.setOnCheckedChangeListener { _, isChecked ->
             if (isChecked) {
@@ -140,18 +140,15 @@ class MainActivityCreateProfile : AppCompatActivity() {
                 darkModeButton.setColorFilter(ContextCompat.getColor(this, R.color.white))
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
 
-                Toast.makeText(this, "Dark mode turned on", Toast.LENGTH_SHORT).show()
-
+//                Toast.makeText(this, "Dark mode turned on", Toast.LENGTH_SHORT).show()
 
             } else {
                 // Dark mode is disabled
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                Toast.makeText(this, "Dark mode turned off", Toast.LENGTH_SHORT).show()
-
+//                Toast.makeText(this, "Dark mode turned off", Toast.LENGTH_SHORT).show()
 
             }
             // Recreate the activity to apply the new night mode setting immediately
-            recreate()
         }
 
 
@@ -251,7 +248,7 @@ class MainActivityCreateProfile : AppCompatActivity() {
                         .into(ProfileImage)
                 } else {
                     // Load and display a default profile image using Picasso
-                    ProfileImage.setImageResource(R.drawable.photo)
+                    ProfileImage.setImageResource(R.drawable.img)
                 }
 
 

@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginStart="2dp"
-        android:layout_marginTop="2dp"
-        android:layout_marginEnd="1dp"
-        android:layout_marginBottom="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="20dp">
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/image_1"/>
+
+        <TextView
+            android:id="@+id/tvSignUp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="Sign Up"
+            android:layout_marginBottom="15dp"
+            android:textSize="25sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:gravity="center"
+           />
 
         <!-- Full Name -->
         <TextView
+            android:id="@+id/tvFullName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Full Name"
-            android:textSize="17sp"
-            android:layout_margin="10dp"
-            android:gravity="center"
-            android:layout_gravity="center"
+            android:text="Full Name *"
+            android:textSize="14sp"
             android:textStyle="bold" />
+
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -40,21 +57,19 @@
             android:layout_width="360dp"
             android:layout_height="50dp"
             android:layout_marginTop="2dp"
-            android:layout_marginBottom="10dp"
-            android:drawableRight="@drawable/baseline_person_24"
+            android:paddingRight="9dp"
+            android:drawableRight="@drawable/baseline_person_2_24"
             android:background="@drawable/button_style1"
             android:hint="Allan Felix"
             android:paddingStart="10dp" />
 
         <TextView
             android:id="@+id/tvEmail"
-            android:layout_width="130dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email"
-            android:layout_margin="10dp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textSize="16sp"
+            android:text="Email *"
+            android:textSize="14sp"
+            android:layout_marginTop="19dp"
             android:textStyle="bold" />
 
         <com.google.android.material.textfield.TextInputLayout
@@ -67,7 +82,6 @@
             android:id="@+id/etEmail"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/button_style1"
             android:hint="adamsmithdomain@gmail.com"
             android:paddingRight="9dp"
@@ -79,14 +93,13 @@
         <!-- Phone Number -->
         <TextView
             android:id="@+id/tvPhoneNumber"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Phone Number"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:textStyle="bold" />
+            android:text="Phone Number *"
+            android:textSize="14sp"
+            android:layout_marginTop="19dp"
+
+            android:textStyle="bold"  />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -98,7 +111,6 @@
             android:id="@+id/etPhoneNumber"
             android:layout_width="360dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/button_style1"
             android:drawableRight="@drawable/drawable_phone"
             android:hint="+334567839087"
@@ -110,14 +122,12 @@
         <!-- Phone Number -->
         <TextView
             android:id="@+id/tvPassword"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Password"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:textStyle="bold" />
+            android:text="Password *"
+            android:textSize="14sp"
+            android:layout_marginTop="19dp"
+            android:textStyle="bold"  />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -130,7 +140,6 @@
             android:id="@+id/etPassword"
             android:layout_width="360dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="10dp"
             android:background="@drawable/button_style1"
             android:drawableRight="@drawable/baseline_lock_open_24"
             android:hint="*****************"
@@ -140,14 +149,12 @@
 
         <TextView
             android:id="@+id/tvAddress"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Address"
-            android:textSize="16sp"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_margin="10dp"
-            android:textStyle="bold" />
+            android:text="Location *"
+            android:textSize="14sp"
+            android:layout_marginTop="19dp"
+            android:textStyle="bold"  />
 
         <com.google.android.material.textfield.TextInputLayout
             android:layout_width="match_parent"
@@ -171,12 +178,13 @@
             android:id="@+id/btnRegister"
             android:layout_width="360dp"
             android:layout_height="50dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_edit_profile"
             android:text="Register"
             android:textAllCaps="false"
             android:textColor="@color/white"
             tools:ignore="VisualLintButtonSize,TextContrastCheck" />
+
 
 
         <TextView
@@ -187,22 +195,21 @@
             android:gravity="center"
             android:text="Already have an account? Sign In"
             android:textSize="15sp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="25dp"
             android:textStyle="bold" />
-
-
-        <ProgressBar
-            android:id="@+id/login_progress"
-            style="?android:attr/progressBarStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="8dp"
-            android:visibility="gone"
-            />
 
 
 
     </LinearLayout>
-</LinearLayout>
+
+    </ScrollView>
+
+    <ProgressBar
+        android:id="@+id/login_progress"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        />
+</RelativeLayout>

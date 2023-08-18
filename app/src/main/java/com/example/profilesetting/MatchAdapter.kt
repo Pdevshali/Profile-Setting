@@ -11,12 +11,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class MatchAdapter(private var userList: List<UserProfile>) :
-    RecyclerView.Adapter<MatchAdapter.MyViewHolder> ()       {
+    RecyclerView.Adapter<MatchAdapter.MyViewHolder> (){
 
 
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
-        // declared teh variable from eachitem
+        // declared teh variable from each_item
         var RvName : TextView
         var profileImage : ImageView
         var RvAddress : TextView

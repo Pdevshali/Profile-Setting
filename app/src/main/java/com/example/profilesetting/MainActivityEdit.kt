@@ -2,8 +2,11 @@ package com.example.profilesetting
 
 import android.annotation.SuppressLint
 import android.content.ContentValues
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.location.Address
+import android.location.Geocoder
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -24,7 +27,6 @@ import com.google.firebase.ktx.Firebase
 class MainActivityEdit : AppCompatActivity() {
 
     private lateinit var etFullName: EditText
-    private lateinit var etEmail: EditText
     private lateinit var etPhoneNumber: EditText
 //    private lateinit var spinner1: Spinner
     private lateinit var etAbout: EditText
@@ -33,8 +35,10 @@ class MainActivityEdit : AppCompatActivity() {
     private lateinit var etAge: EditText
     private lateinit var btnSaveChanges: Button
     lateinit var ImageV : ImageView
+    lateinit var userId : String
 
-   private var db = Firebase.firestore
+
+    private var db = Firebase.firestore
     lateinit var firebaseAuth : FirebaseAuth
 
 
@@ -45,7 +49,6 @@ class MainActivityEdit : AppCompatActivity() {
 
         // Find views by their respective IDs
         etFullName = findViewById(R.id.etFullName)
-        etEmail = findViewById(R.id.etEmail)
         etPhoneNumber = findViewById(R.id.etPhoneNumber)
 //        spinner1 = findViewById(R.id.spinner1)
         etAbout = findViewById(R.id.etAbout)
@@ -61,11 +64,10 @@ class MainActivityEdit : AppCompatActivity() {
 
         // Set text color to watermelon color for EditText fields
         etFullName.setTextColor(Color.parseColor("#FF4D67"))
-        etEmail.setTextColor(Color.parseColor("#FF4D67"))
         etPhoneNumber.setTextColor(Color.parseColor("#FF4D67"))
-//        etAbout.setTextColor(Color.parseColor("#FF4D67"))
-//        etInterest.setTextColor(Color.parseColor("#FF4D67"))
-//        etAddress.setTextColor(Color.parseColor("#FF4D67"))
+        etAbout.setTextColor(Color.parseColor("#FF4D67"))
+        etInterest.setTextColor(Color.parseColor("#FF4D67"))
+        etAddress.setTextColor(Color.parseColor("#FF4D67"))
 
 
         // back to the previous Activity
@@ -139,35 +141,43 @@ class MainActivityEdit : AppCompatActivity() {
         // Set click listener for the btnSaveChanges button
         btnSaveChanges.setOnClickListener {
             val fName = etFullName.text.toString().trim()
-            val email = etEmail.text.toString().trim()
             val phone = etPhoneNumber.text.toString().trim()
             val age = etAge.text.toString().trim()
             val about = etAbout.text.toString().trim()
             val interest = etInterest.text.toString().trim()
-            val address = etAddress.text.toString().trim()
+            val locationAddress = etAddress.text.toString().trim()
             val userId = firebaseAuth.currentUser!!.uid
 
+            val curentUser = firebaseAuth.currentUser
+
+            getLatLngFromAddress(this, locationAddress) { latitude, longitude ->
+                // Use the latitude and longitude values in your application logic
+                if (latitude != 0.0 && longitude != 0.0) {
+                    // Save the latitude and longitude along with other user data to Firestore
+                    val updateMap = mapOf(
+                        "name" to fName,
+                        "Mobile" to phone,
+                        "age" to age,
+                        "about" to about,
+                        "interest" to interest,
+                        "Location" to locationAddress,
+                        "latitude" to latitude,
+                        "longitude" to longitude
+                    )
+
+                    db.collection("Users").document(userId).update(updateMap).addOnSuccessListener {
+                        Toast.makeText(this, "Data successfully updated...", Toast.LENGTH_SHORT).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(this, "Failed...", Toast.LENGTH_SHORT).show()
+                    }
 
 
-
-            // update
-
-            val updateMap = mapOf(
-                "name" to fName,
-                "Email" to email,
-                "Mobile" to phone,
-                "age" to age,
-                "about" to about,
-                "Location" to address,
-                "interest" to interest
-            )
-
-
-            db.collection("Users").document(userId).update(updateMap).addOnSuccessListener {
-                Toast.makeText(this, "Data successfully updated...", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-                Toast.makeText(this, "Failed...", Toast.LENGTH_SHORT).show()
+                } else {
+                    // Handle the case where the geocoding process failed to find latitude and longitude
+                    Toast.makeText(this, "Failed to find latitude and longitude", Toast.LENGTH_SHORT).show()
+                }
             }
+
 
         }
 
@@ -183,17 +193,36 @@ class MainActivityEdit : AppCompatActivity() {
         ref.get().addOnSuccessListener {
             if (it!=null) {
                 val Name = it.data?.get("name")?.toString()
-                val Email = it.data?.get("Email")?.toString()
                 val Phone = it.data?.get("Mobile")?.toString()
 
                 etFullName.text = Editable.Factory.getInstance().newEditable(Name)
-                etEmail.text = Editable.Factory.getInstance().newEditable(Email)
                 etPhoneNumber.text = Editable.Factory.getInstance().newEditable(Phone)
 
             }
         }.addOnFailureListener {
             it.message?.let { it1 -> Log.d(ContentValues.TAG, it1) }
         }
+    }
+
+
+
+    private  fun getLatLngFromAddress(context: Context, mAddress: String, callback: (latitude: Double, longitude: Double) -> Unit) {
+        val coder = Geocoder(context)
+        lateinit var address: List<Address>
+        try {
+            address = coder.getFromLocationName(mAddress, 5)!!
+            if (address.isEmpty()) {
+                callback(0.0, 0.0) // Call the callback with default values if no address is found
+                return
+            }
+            val location = address[0]
+            val latitude = location.latitude
+            val longitude = location.longitude
+            callback(latitude, longitude) // Call the callback with the latitude and longitude values
+        } catch (e: Exception) {
+            callback(0.0, 0.0) // Call the callback with default values in case of an error
+        }
+        return
     }
 
     }

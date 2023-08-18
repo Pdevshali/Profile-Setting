@@ -13,7 +13,8 @@
         android:layout_marginStart="2dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="1dp"
-        android:layout_marginBottom="0dp"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:orientation="vertical"
         android:padding="16dp">
 
@@ -38,7 +39,7 @@
             android:id="@+id/tvEmail"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:text="Email"
+            android:text="Email *"
             android:layout_margin="10dp"
             android:layout_gravity="center"
             android:gravity="center"
@@ -72,7 +73,7 @@
             android:id="@+id/tvPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Password"
+            android:text="Password *"
             android:textSize="16sp"
             android:layout_gravity="center"
             android:gravity="center"
