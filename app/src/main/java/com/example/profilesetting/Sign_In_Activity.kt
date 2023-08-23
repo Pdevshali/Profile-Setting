@@ -64,7 +64,7 @@ class Sign_In_Activity : AppCompatActivity() {
 
 
                     } else {
-                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, it.exception?.message.toString(), Toast.LENGTH_SHORT).show()
                     }
                 }
 

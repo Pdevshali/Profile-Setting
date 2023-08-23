@@ -28,7 +28,7 @@ class MainActivityEdit : AppCompatActivity() {
 
     private lateinit var etFullName: EditText
     private lateinit var etPhoneNumber: EditText
-//    private lateinit var spinner1: Spinner
+    private lateinit var spinner1: Spinner
     private lateinit var etAbout: EditText
     private lateinit var etInterest: EditText
     private lateinit var etAddress: EditText
@@ -50,7 +50,7 @@ class MainActivityEdit : AppCompatActivity() {
         // Find views by their respective IDs
         etFullName = findViewById(R.id.etFullName)
         etPhoneNumber = findViewById(R.id.etPhoneNumber)
-//        spinner1 = findViewById(R.id.spinner1)
+        spinner1 = findViewById(R.id.spinner1)
         etAbout = findViewById(R.id.etAbout)
         etAge = findViewById(R.id.etAge)
         etInterest = findViewById(R.id.etInterest)
@@ -78,62 +78,51 @@ class MainActivityEdit : AppCompatActivity() {
         }
 
 
-//
-//        val genderOptions = arrayOf("Male", "Female", "Other")
-//
-//// Create an ArrayAdapter using the string array and a default spinner layout
-//        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genderOptions)
-//// Specify the layout to use when the list of choices appears
-//        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-//// Apply the adapter to the spinner
-//        spinner1.adapter = spinnerAdapter
-//
-//        // Set item selection listener for spinner1 (Gender)
-//        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onItemSelected(
-//                parent: AdapterView<*>,
-//                view: View?,
-//                position: Int,
-//                id: Long
-//            ) {
-//                val selectedGender = parent.getItemAtPosition(position).toString()
-//                // Handle the selected gender value
-//                when (selectedGender) {
-//                    "Male" -> {
-//                        // Perform actions for Male selection
-//                        Toast.makeText(
-//                            this@MainActivityEdit,
-//                            "male is selected",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//
-//                    "Female" -> {
-//                        // Perform actions for Female selection
-//                        Toast.makeText(
-//                            this@MainActivityEdit,
-//                            "Female is selected",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//
-//                    "Other" -> {
-//                        // Perform actions for Other selection
-//                        Toast.makeText(
-//                            this@MainActivityEdit,
-//                            "Other  is selected",
-//                            Toast.LENGTH_SHORT
-//                        ).show()
-//                    }
-//                }
-//            }
-//
-//            override fun onNothingSelected(parent: AdapterView<*>) {
-//                // Handle the case when nothing is selected
-//                Toast.makeText(this@MainActivityEdit, "Please select the field", Toast.LENGTH_SHORT)
-//                    .show()
-//            }
-//        }
+
+        val genderOptions = arrayOf("Male", "Female", "Other")
+
+// Create an ArrayAdapter using the string array and a default spinner layout
+        val spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, genderOptions)
+// Specify the layout to use when the list of choices appears
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+// Apply the adapter to the spinner
+        spinner1.adapter = spinnerAdapter
+
+        // Set item selection listener for spinner1 (Gender)
+        spinner1.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(
+                parent: AdapterView<*>,
+                view: View?,
+                position: Int,
+                id: Long
+            ) {
+                val selectedGender = parent.getItemAtPosition(position).toString()
+                when (selectedGender) {
+                    "Male" -> {
+                        // Perform actions for Male selection
+                        storeSelectedGenderInFirebase("Male")
+                    }
+
+                    "Female" -> {
+                        // Perform actions for Female selection
+                        storeSelectedGenderInFirebase("Female")
+                    }
+
+                    "Other" -> {
+                        // Perform actions for Other selection
+                        storeSelectedGenderInFirebase("Other")
+                    }
+                }
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // Handle the case when nothing is selected
+                Toast.makeText(this@MainActivityEdit, "Please select the field", Toast.LENGTH_SHORT)
+                    .show()
+            }
+        }
+
+
 
         setData()
 
@@ -178,10 +167,31 @@ class MainActivityEdit : AppCompatActivity() {
                 }
             }
 
-
         }
+    }
 
+    private fun storeSelectedGenderInFirebase(selectedGender: String) {
+        // Get the current user's ID
+        val userId = firebaseAuth.currentUser!!.uid
 
+        // Check if the user is logged in
+        if (userId != null) {
+            // Reference to the user's document in Firestore
+            val userDocumentRef = db.collection("Users").document(userId)
+
+            // Update the "gender" field with the selected gender
+            val updateMap = mapOf("gender" to selectedGender)
+            userDocumentRef.update(updateMap)
+                .addOnSuccessListener {
+                    // Successfully updated the gender in Firestore
+                    Toast.makeText(this,"Gender successfully updated", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    // Handle the failure, if needed
+                    Toast.makeText(this,"Failed", Toast.LENGTH_SHORT).show()
+
+                }
+        }
     }
 
 
